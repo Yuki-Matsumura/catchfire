@@ -7,5 +7,6 @@ num = len(core)
 
 for i in range(num):
   i = i + 1
-  for line in open(corepath + "temp" + str(i) + "_input", "r"):
-    print("core +" + line[:2] + "." + line[2:5] + "  degree Celsius")
+  for input in open(corepath + "temp" + str(i) + "_input", "r"):
+    for crit in open(corepath + "temp" + str(i) + "_crit", "r"):
+      print("Core" + str(i) + ":  " + input[:2] + "." + input[2:5] + "  Crit: +" + crit[:2] + "." + crit[2:5])
