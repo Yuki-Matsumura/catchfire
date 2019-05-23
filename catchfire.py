@@ -13,3 +13,5 @@ for i in range(num):
     for crit in open(corepath + "temp" + str(i) + "_crit", "r"):
       print("Core" + str(i) + ":  " + coretemp[:2] + "." + coretemp[2:5] + "  Crit: +" + crit[:2] + "." + crit[2:5])
 print now
+
+#test
