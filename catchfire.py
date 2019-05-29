@@ -19,7 +19,7 @@ def cpuinfo():
         break
   cpuname = line.split(":")
   global cpuname
-  cpuname = str(cpuname[1])[1:]
+  cpuname = str(cpuname[1])[1:].rstrip('\n')
 ##### Get CPU info #####
 
 ##### Get now Temp #####
@@ -55,21 +55,36 @@ def hightemp():
   difftemp = [max(nowdifftemp) for nowdifftemp in zip(now, difftemp)]
 ##### Get high Temp #####
 
+##### Display #####
+def disp():
+  print("+==============================================================+" + '\n' +
+        "| CPU: " + cpuname + "                 |" + '\n' +
+        "+==============================================================+" )
+  i = 0
+  for i in range(num):
+    no = i + 1
+    print("| Core" + str(no) + " " + str(now[i])[0:2] + "." + str(now[i])[2:3])
+
+##### Display #####
 
 ##### Main #####
 def action():
   try:
     maximumtemp()
+    cpuinfo()
     while True:
       pass
       os.system('clear')
       hightemp()
+##### display logic #####
+      disp()
       print("now:  ")
       print now
       print("high: ")
       print difftemp
       print("max:  ")
       print maximum
+##### display logic #####
       time.sleep(2)
   except KeyboardInterrupt:
     os.system('clear')
