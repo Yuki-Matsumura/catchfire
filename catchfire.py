@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import glob
 import time
 import os
@@ -59,12 +60,18 @@ def hightemp():
 def disp():
   print("+==============================================================+" + '\n' +
         "| CPU: " + cpuname + "                 |" + '\n' +
-        "+==============================================================+" )
+        "+==============================================================+" + '\n' +
+        "| Core No.     |    Current    |    Max temp   |    Critical   |" + '\n'
+        "+--------------------------------------------------------------+")
   i = 0
   for i in range(num):
     no = i + 1
-    print("| Core" + str(no) + " " + str(now[i])[0:2] + "." + str(now[i])[2:3])
-
+    print("| Core" + str(no) + "        |" +
+          "    " + str(now[i])[0:2] + "." + str(now[i])[2:3] + "°C     |" +
+          "    " + str(difftemp[i])[0:2] + "." + str(difftemp[i])[2:3] + "°C     |" +
+          "    " + str(maximum[i])[0:2] + "." + str(maximum[i])[2:3] + "°C     |"
+         )
+  print("+==============================================================+")
 ##### Display #####
 
 ##### Main #####
@@ -78,6 +85,7 @@ def action():
       hightemp()
 ##### display logic #####
       disp()
+      print("-----after Sample Temp------")
       print("now:  ")
       print now
       print("high: ")
