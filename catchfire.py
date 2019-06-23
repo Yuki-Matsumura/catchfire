@@ -2,6 +2,7 @@
 import glob
 import time
 import os
+import datetime
 
 global corepath
 corepath = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/"
@@ -10,6 +11,8 @@ global num
 num = len(core)
 global high
 high = []
+global st
+st = datetime.datetime.now()
 
 ##### Get CPU info #####
 def cpuinfo():
@@ -74,6 +77,15 @@ def disp():
   print("+==============================================================+")
 ##### Display #####
 
+##### Date #####
+def timeprint():
+  pst = st.strftime('%Y/%m/%d %H:%M:%S')
+  nt = datetime.datetime.now()
+  nt = nt.strftime('%Y/%m/%d %H:%M:%S')
+  print("| Start  " + pst + "   | Current  " + nt + "  |" + '\n' +
+        "+==============================================================+")
+##### Date #####
+
 ##### Main #####
 def action():
   try:
@@ -85,13 +97,7 @@ def action():
       hightemp()
 ##### display logic #####
       disp()
-      print("-----after Sample Temp------")
-      print("now:  ")
-      print now
-      print("high: ")
-      print difftemp
-      print("max:  ")
-      print maximum
+      timeprint()
 ##### display logic #####
       time.sleep(2)
   except KeyboardInterrupt:
