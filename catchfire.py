@@ -69,11 +69,24 @@ def disp():
   i = 0
   for i in range(num):
     no = i + 1
-    print("| Core" + str(no) + "        |" +
-          "    " + str(now[i])[0:2] + "." + str(now[i])[2:3] + "°C     |" +
-          "    " + str(difftemp[i])[0:2] + "." + str(difftemp[i])[2:3] + "°C     |" +
-          "    " + str(maximum[i])[0:2] + "." + str(maximum[i])[2:3] + "°C     |"
-         )
+    if int(now[i]) <= 45000:
+      print("| Core" + str(no) + "        |" +
+            "    " + color.GREEN + str(now[i])[0:2] + "." + str(now[i])[2:3] + color.END + "°C     |" +
+            "    " + str(difftemp[i])[0:2] + "." + str(difftemp[i])[2:3] + "°C     |" +
+            "    " + str(maximum[i])[0:2] + "." + str(maximum[i])[2:3] + "°C     |"
+           )
+    elif 45000 < int(now[i]) <= 65000:
+      print("| Core" + str(no) + "        |" +
+            "    " + color.YELLOW + str(now[i])[0:2] + "." + str(now[i])[2:3] + color.END + "°C     |" +
+            "    " + str(difftemp[i])[0:2] + "." + str(difftemp[i])[2:3] + "°C     |" +
+            "    " + str(maximum[i])[0:2] + "." + str(maximum[i])[2:3] + "°C     |"
+           )
+    else:
+      print("| Core" + str(no) + "        |" +
+            "    " + color.RED + str(now[i])[0:2] + "." + str(now[i])[2:3] + color.END + "°C     |" +
+            "    " + str(difftemp[i])[0:2] + "." + str(difftemp[i])[2:3] + "°C     |" +
+            "    " + str(maximum[i])[0:2] + "." + str(maximum[i])[2:3] + "°C     |"
+           )
   print("+==============================================================+")
 ##### Display #####
 
@@ -105,13 +118,12 @@ def action():
     print("End script.")
 ##### Main #####
 
-
-action()
-
-
+##### Color font #####
 class color:
     RED = '\033[31m'
     GREEN = '\033[32m'
     YELLOW = '\033[33m'
     END = '\033[0m'
-#print("Core" + str(i) + ":  " + coretemp[:2] + "." + coretemp[2:5] + "  Crit: +" + crit[:2] + "." + crit[2:5])
+##### Color font #####
+
+action()
