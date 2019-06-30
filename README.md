@@ -16,7 +16,7 @@ Table of contents
 - - -
 Overview
 ----
-This Python script displays the temperature of Linux. Use in an environment where lm-sensors can not be installed.
+This Python script displays the CPU temperature of Linux. Use in an environment where lm-sensors can not be installed.
 
 
 <a id="chap2"></a>
